@@ -19,79 +19,205 @@ export function App() {
   const [loginRole, setLoginRole] = useState<string | null>(() => {
     return localStorage.getItem("smkn14_login_role") || null;
   });
-
-  // State untuk CRUD Struktur Organisasi
+  const [inputTeacherName, setInputTeacherName] = useState("");
+  const [isVerifiedChecked, setIsVerifiedChecked] = useState(false); // Ganti state verifikasi jadi checkbox
+  // State untuk Struktur Organisasi (Data Lengkap, Tanpa Foto, Tanpa Edit/Hapus)
   const defaultOrgData: OrgMember[] = [
+    // Pimpinan Sekolah
     {
       id: 1,
       nama: "Andriyanti Pasaribu, S.Pd",
       jabatan: "Kepala Sekolah",
       kategori: "Pimpinan",
-      foto: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=400",
+      foto: "",
     },
     {
       id: 2,
       nama: "Darmansyah Pohan, S.Pd., M.Pd",
       jabatan: "Wakil Kepala Sekolah Bid. Kurikulum",
       kategori: "Pimpinan",
-      foto: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=400",
+      foto: "",
     },
     {
       id: 3,
       nama: "Lendrizon, S.Pd.",
       jabatan: "Wakil Kepala Sekolah Bid. Kesiswaan",
       kategori: "Pimpinan",
-      foto: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=400",
+      foto: "",
     },
     {
       id: 4,
       nama: "Drs. Antoni Siregar",
       jabatan: "Wakil Kepala Sekolah Bid. Sarana Prasarana",
       kategori: "Pimpinan",
-      foto: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=400",
+      foto: "",
     },
     {
       id: 5,
-      nama: "Eka Dharmayanti Manurung, S.Pd.",
-      jabatan: "Teknik Komputer dan Informatika",
-      kategori: "Program Keahlian",
-      foto: "https://images.unsplash.com/photo-1580894732475-84992925a07c?auto=format&fit=crop&q=80&w=400",
+      nama: "Ahmad Anwar Siregar, S.Pd.",
+      jabatan:
+        "Wakil Kepala Sekolah Bid. Hub. Masyarakat dan Dunia Usaha / Industri",
+      kategori: "Pimpinan",
+      foto: "",
     },
+
+    // Program Keahlian
     {
       id: 6,
       nama: "Syukri Abdullah Manik, S.Pd.",
       jabatan: "Teknik Konstruksi dan Properti",
       kategori: "Program Keahlian",
-      foto: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=400",
+      foto: "",
     },
     {
       id: 7,
-      nama: "Reni Famalia Sitorus, S.Pd",
-      jabatan: "Teknik Komputer dan Jaringan",
-      kategori: "Kepala Bengkel",
-      foto: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=400",
+      nama: "Ependi Ginting, S.Pd",
+      jabatan: "Teknik Otomotif",
+      kategori: "Program Keahlian",
+      foto: "",
     },
     {
       id: 8,
-      nama: "Mukhlis Idrus, S.Kom",
-      jabatan: "Rekayasa Perangkat Lunak",
-      kategori: "Kepala Bengkel",
-      foto: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=400",
+      nama: "Lily Dewi, S.Pd.",
+      jabatan: "Teknik Kelistrikan",
+      kategori: "Program Keahlian",
+      foto: "",
     },
     {
       id: 9,
+      nama: "Panahatan Sihombing",
+      jabatan: "Teknik Pemesinan",
+      kategori: "Program Keahlian",
+      foto: "",
+    },
+    {
+      id: 10,
+      nama: "Eka Dharmayanti Manurung, S.Pd.",
+      jabatan: "Teknik Komputer dan Informatika",
+      kategori: "Program Keahlian",
+      foto: "",
+    },
+    {
+      id: 11,
+      nama: "Drs. Zulkifli",
+      jabatan: "Teknik Elektronika",
+      kategori: "Program Keahlian",
+      foto: "",
+    },
+    {
+      id: 12,
+      nama: "Ahmad Faisal, S.Pd",
+      jabatan: "Pariwisata",
+      kategori: "Program Keahlian",
+      foto: "",
+    },
+
+    // Kepala Bengkel / Ketua Kompetensi Keahlian
+    {
+      id: 13,
+      nama: "Darwin Sitepu",
+      jabatan: "Desain Pemodelan dan Informasi Bangunan",
+      kategori: "Kepala Bengkel",
+      foto: "",
+    },
+    {
+      id: 14,
+      nama: "Reja Syahputra, S.Pd",
+      jabatan: "Bisnis Konstruksi dan Properti",
+      kategori: "Kepala Bengkel",
+      foto: "",
+    },
+    {
+      id: 15,
+      nama: "Fermi Haris Bahagia Tarigan, S.Pd",
+      jabatan: "Teknik Kendaraan Ringan",
+      kategori: "Kepala Bengkel",
+      foto: "",
+    },
+    {
+      id: 16,
+      nama: "Ahmad Ridwan, S.Pd.",
+      jabatan: "Teknik Bisnis Sepeda Motor",
+      kategori: "Kepala Bengkel",
+      foto: "",
+    },
+    {
+      id: 17,
+      nama: "Drs. Tolen",
+      jabatan: "Teknik Bodi Otomotif",
+      kategori: "Kepala Bengkel",
+      foto: "",
+    },
+    {
+      id: 18,
+      nama: "Juwita Vebrina Zebua, S.Pd.",
+      jabatan: "Teknik Instalasi Tenaga Listrik",
+      kategori: "Kepala Bengkel",
+      foto: "",
+    },
+    {
+      id: 19,
+      nama: "Irma Debora Simatupang, S.Pd",
+      jabatan: "Teknik Pemesinan",
+      kategori: "Kepala Bengkel",
+      foto: "",
+    },
+    {
+      id: 20,
+      nama: "Reni Famalia Sitorus, S.Pd",
+      jabatan: "Teknik Komputer dan Jaringan",
+      kategori: "Kepala Bengkel",
+      foto: "",
+    },
+    {
+      id: 21,
+      nama: "Mukhlis Idrus, S.Kom",
+      jabatan: "Rekayasa Perangkat Lunak",
+      kategori: "Kepala Bengkel",
+      foto: "",
+    },
+    {
+      id: 22,
+      nama: "Aron Heriyanto Naiborhu, S.Pd.",
+      jabatan: "Teknik Elektronika Industri",
+      kategori: "Kepala Bengkel",
+      foto: "",
+    },
+    {
+      id: 23,
+      nama: "Sumiati, SE",
+      jabatan: "Perhotelan",
+      kategori: "Kepala Bengkel",
+      foto: "",
+    },
+
+    // Kepala / Ketua Bidang / Unit
+    {
+      id: 24,
       nama: "Nurul Rafiqah, M.Si.",
       jabatan: "Kepala Perpustakaan",
       kategori: "Unit/Bidang",
-      foto: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=400",
+      foto: "",
+    },
+    {
+      id: 25,
+      nama: "HARNAS, M.Pd",
+      jabatan: "Kepala Lab. IPA",
+      kategori: "Unit/Bidang",
+      foto: "",
+    },
+    {
+      id: 26,
+      nama: "Ahmad Faisal, S.Pd.",
+      jabatan: "Ketua BKK / PPKS",
+      kategori: "Unit/Bidang",
+      foto: "",
     },
   ];
-
   const [orgData, setOrgData] = useState<OrgMember[]>(() => {
     const saved = localStorage.getItem("smkn14_org_data");
     return saved ? JSON.parse(saved) : defaultOrgData;
   });
-  const [orgFilter, setOrgFilter] = useState<string>("all");
   const [showOrgModal, setShowOrgModal] = useState<boolean>(false);
   const [editOrgId, setEditOrgId] = useState<number | null>(null);
   const [formNama, setFormNama] = useState<string>("");
@@ -276,36 +402,57 @@ export function App() {
     }
   };
 
-  const openAddOrgModal = () => {
-    setEditOrgId(null);
-    setFormNama("");
-    setFormJabatan("");
-    setFormKategori("Pimpinan");
-    setFormFotoFile(null);
-    setShowOrgModal(true);
-  };
-
-  const openEditOrgModal = (item: OrgMember) => {
-    setEditOrgId(item.id);
-    setFormNama(item.nama);
-    setFormJabatan(item.jabatan);
-    setFormKategori(item.kategori);
-    setFormFotoFile(null);
-    setShowOrgModal(true);
-  };
-
   const closeOrgModal = () => {
     setShowOrgModal(false);
     setEditOrgId(null);
   };
 
-  const handleDeleteOrg = (id: number) => {
-    if (confirm("Apakah Anda yakin ingin menghapus data pejabat ini?")) {
-      const updated = orgData.filter((item) => item.id !== id);
-      setOrgData(updated);
-      localStorage.setItem("smkn14_org_data", JSON.stringify(updated));
-    }
-  };
+  // --- GANTI DENGAN INTERSECTION OBSERVER YANG JAUH LEBIH AKURAT ---
+  useEffect(() => {
+    const sections = [
+      "hero-top",
+      "latar-belakang",
+      "sambutan",
+      "organisasi",
+      "lokasi",
+      "kontak",
+    ];
+
+    const observerCallback: IntersectionObserverCallback = (entries) => {
+      entries.forEach((entry) => {
+        // Jika section tersebut sedang berada di area pandang tengah layar
+        if (entry.isIntersecting) {
+          const id = entry.target.id;
+          setActiveSection(id);
+          updateIndicator(id);
+        }
+      });
+    };
+
+    const observerOptions: IntersectionObserverInit = {
+      root: null,
+      // Membuat garis imajiner di tengah layar untuk memicu perubahan menu
+      rootMargin: "-40% 0px -40% 0px",
+      threshold: 0,
+    };
+
+    const observer = new IntersectionObserver(
+      observerCallback,
+      observerOptions,
+    );
+
+    sections.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+
+    return () => {
+      sections.forEach((id) => {
+        const el = document.getElementById(id);
+        if (el) observer.unobserve(el);
+      });
+    };
+  }, [updateIndicator]);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -664,48 +811,84 @@ export function App() {
         </div>
       )}
 
-      {/* Hidden Teacher Modal */}
+      {/* Hidden Teacher Modal (Ukuran Lebih Besar & Lega) */}
       {showHiddenTeacherModal && (
         <div className="fixed inset-0 z-[99999] flex items-center justify-center bg-black/80 backdrop-blur-md p-4 animate-fade-in">
-          <div className="bg-neutral-900 border border-neutral-600/40 rounded-3xl p-8 max-w-md w-full text-center shadow-[0_25px_60px_rgba(0,0,0,0.9)]">
-            <div className="w-12 h-12 rounded-full bg-neutral-800 border border-neutral-600/50 text-neutral-300 flex items-center justify-center mx-auto mb-4 text-xl">
-              👨‍🏫
+          <div className="bg-neutral-900 border border-neutral-600/40 rounded-3xl p-10 max-w-lg w-full text-center shadow-[0_25px_60px_rgba(0,0,0,0.9)] text-white">
+            {/* Ikon */}
+            <div className="w-14 h-14 rounded-full bg-neutral-800 border border-neutral-600/50 text-neutral-300 flex items-center justify-center mx-auto mb-4 text-2xl">
+              🔐
             </div>
-            <h3 className="text-xl font-bold text-white mb-2 tracking-tight">
-              Hidden Teacher Quick Login
+
+            <h3 className="text-2xl font-bold mb-2 tracking-tight">
+              Verifikasi Akses Pengajar
             </h3>
-            <p className="text-xs text-neutral-400 mb-6 leading-relaxed">
-              Pilih akses cepat profil guru / wali kelas untuk masuk langsung:
+            <p className="text-xs md:text-sm text-neutral-400 mb-6 leading-relaxed">
+              Masukkan nama lengkap Anda dan centang kotak verifikasi di bawah
+              untuk masuk.
             </p>
-            <div className="space-y-3">
-              <button
-                type="button"
-                onClick={() => handleHiddenTeacherLogin("Wali Kelas X TKJ 1")}
-                className="w-full bg-neutral-800 hover:bg-neutral-700 text-white py-3.5 px-4 rounded-xl font-bold text-xs transition-all shadow-lg flex items-center justify-between border border-white/10"
-              >
-                <span>Wali Kelas X TKJ 1</span>
-                <span className="text-[10px] bg-black/40 px-2 py-0.5 rounded text-neutral-300">
-                  Guru / Wali Kelas
-                </span>
-              </button>
-              <button
-                type="button"
-                onClick={() => handleHiddenTeacherLogin("Dewan Guru Produktif")}
-                className="w-full bg-neutral-800 hover:bg-neutral-700 text-white py-3.5 px-4 rounded-xl font-bold text-xs transition-all shadow-lg flex items-center justify-between border border-white/10"
-              >
-                <span>Dewan Guru Produktif</span>
-                <span className="text-[10px] bg-black/40 px-2 py-0.5 rounded text-neutral-300">
-                  Staf Pengajar
-                </span>
-              </button>
-              <button
-                type="button"
-                onClick={() => setShowHiddenTeacherModal(false)}
-                className="w-full bg-white/10 hover:bg-white/15 text-neutral-300 py-3 rounded-xl font-semibold text-xs transition-all mt-2"
-              >
-                Batal / Tutup
-              </button>
-            </div>
+
+            {/* Form Input Nama & Checkbox */}
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                if (!isVerifiedChecked) {
+                  alert("Harap centang kotak verifikasi terlebih dahulu!");
+                  return;
+                }
+                handleHiddenTeacherLogin(inputTeacherName);
+              }}
+              className="space-y-5 text-left"
+            >
+              {/* Input Nama Guru */}
+              <div>
+                <label className="block text-xs font-semibold uppercase tracking-wider text-neutral-400 mb-2">
+                  Nama Guru / Wali Kelas
+                </label>
+                <input
+                  type="text"
+                  value={inputTeacherName}
+                  onChange={(e) => setInputTeacherName(e.target.value)}
+                  placeholder="Contoh: Andriyanti Pasaribu, S.Pd"
+                  required
+                  className="w-full bg-neutral-950 border border-neutral-800 rounded-xl px-4 py-3.5 text-sm text-white placeholder-neutral-600 focus:outline-none focus:border-neutral-500 transition"
+                />
+              </div>
+
+              {/* Kotak Centang Verifikasi (Checkbox) */}
+              <div className="flex items-center space-x-3 pt-1">
+                <input
+                  type="checkbox"
+                  id="verifyCheckbox"
+                  checked={isVerifiedChecked}
+                  onChange={(e) => setIsVerifiedChecked(e.target.checked)}
+                  className="w-4 h-4 accent-white bg-neutral-950 border-neutral-800 rounded cursor-pointer"
+                />
+                <label
+                  htmlFor="verifyCheckbox"
+                  className="text-xs md:text-sm text-neutral-300 cursor-pointer select-none"
+                >
+                  Saya menyatakan bahwa saya adalah pengajar yang sah.
+                </label>
+              </div>
+
+              {/* Tombol Aksi */}
+              <div className="flex space-x-3 pt-4">
+                <button
+                  type="button"
+                  onClick={() => setShowHiddenTeacherModal(false)}
+                  className="flex-1 bg-neutral-800 hover:bg-neutral-700 text-neutral-300 font-medium py-3.5 rounded-xl text-xs uppercase tracking-wider transition cursor-pointer"
+                >
+                  Batal
+                </button>
+                <button
+                  type="submit"
+                  className="flex-1 bg-white hover:bg-neutral-200 text-black font-semibold py-3.5 rounded-xl text-xs uppercase tracking-wider transition shadow-lg cursor-pointer"
+                >
+                  Verifikasi Masuk
+                </button>
+              </div>
+            </form>
           </div>
         </div>
       )}
@@ -784,10 +967,11 @@ export function App() {
 
         <nav
           ref={navRef}
-          className="pointer-events-auto justify-self-center hidden md:flex items-center space-x-1 text-xs font-semibold text-neutral-300 bg-neutral-900/80 backdrop-blur-2xl p-1.5 rounded-full border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.5)] relative"
+          className="pointer-events-auto justify-self-center hidden md:flex items-center space-x-1.5 text-xs font-semibold text-neutral-300 bg-neutral-900/80 backdrop-blur-2xl p-2 rounded-full border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.5)] relative"
         >
+          {/* Kotak Putih Animasi Geser */}
           <div
-            className="absolute top-1.5 bottom-1.5 rounded-full bg-white shadow-lg transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] pointer-events-none"
+            className="absolute top-2 bottom-2 rounded-full bg-white shadow-lg transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] pointer-events-none"
             style={{
               left: `${indicatorStyle.left}px`,
               width: `${indicatorStyle.width}px`,
@@ -799,7 +983,7 @@ export function App() {
             id="nav-hero-top"
             href="#hero-top"
             onClick={(e) => scrollToSection(e, "hero-top")}
-            className={`relative z-10 px-4 py-2 rounded-full transition-colors duration-300 tracking-wider uppercase text-[11px] ${
+            className={`relative z-10 px-5 py-2.5 rounded-full transition-colors duration-300 tracking-wider uppercase text-xs ${
               activeSection === "hero-top"
                 ? "text-black font-bold"
                 : "hover:text-white"
@@ -807,11 +991,12 @@ export function App() {
           >
             Beranda
           </a>
+
           <a
             id="nav-latar-belakang"
             href="#latar-belakang"
             onClick={(e) => scrollToSection(e, "latar-belakang")}
-            className={`relative z-10 px-4 py-2 rounded-full transition-colors duration-300 tracking-wider uppercase text-[11px] ${
+            className={`relative z-10 px-5 py-2.5 rounded-full transition-colors duration-300 tracking-wider uppercase text-xs ${
               activeSection === "latar-belakang"
                 ? "text-black font-bold"
                 : "hover:text-white"
@@ -819,11 +1004,12 @@ export function App() {
           >
             Sejarah
           </a>
+
           <a
             id="nav-sambutan"
             href="#sambutan"
             onClick={(e) => scrollToSection(e, "sambutan")}
-            className={`relative z-10 px-4 py-2 rounded-full transition-colors duration-300 tracking-wider uppercase text-[11px] ${
+            className={`relative z-10 px-5 py-2.5 rounded-full transition-colors duration-300 tracking-wider uppercase text-xs ${
               activeSection === "sambutan"
                 ? "text-black font-bold"
                 : "hover:text-white"
@@ -831,11 +1017,12 @@ export function App() {
           >
             Sambutan
           </a>
+
           <a
             id="nav-organisasi"
             href="#organisasi"
             onClick={(e) => scrollToSection(e, "organisasi")}
-            className={`relative z-10 px-4 py-2 rounded-full transition-colors duration-300 tracking-wider uppercase text-[11px] ${
+            className={`relative z-10 px-5 py-2.5 rounded-full transition-colors duration-300 tracking-wider uppercase text-xs ${
               activeSection === "organisasi"
                 ? "text-black font-bold"
                 : "hover:text-white"
@@ -843,11 +1030,26 @@ export function App() {
           >
             Organisasi
           </a>
+
+          {/* Visi & Misi dipisah menjadi elemen mandiri */}
+          <a
+            id="nav-visi-misi"
+            href="#visi-misi"
+            onClick={(e) => scrollToSection(e, "visi-misi")}
+            className={`relative z-10 px-5 py-2.5 rounded-full transition-colors duration-300 tracking-wider uppercase text-xs ${
+              activeSection === "visi-misi"
+                ? "text-black font-bold"
+                : "hover:text-white"
+            }`}
+          >
+            Visi & Misi
+          </a>
+
           <a
             id="nav-lokasi"
             href="#lokasi"
             onClick={(e) => scrollToSection(e, "lokasi")}
-            className={`relative z-10 px-4 py-2 rounded-full transition-colors duration-300 tracking-wider uppercase text-[11px] ${
+            className={`relative z-10 px-5 py-2.5 rounded-full transition-colors duration-300 tracking-wider uppercase text-xs ${
               activeSection === "lokasi"
                 ? "text-black font-bold"
                 : "hover:text-white"
@@ -855,11 +1057,12 @@ export function App() {
           >
             Peta
           </a>
+
           <a
             id="nav-kontak"
             href="#kontak"
             onClick={(e) => scrollToSection(e, "kontak")}
-            className={`relative z-10 px-4 py-2 rounded-full transition-colors duration-300 tracking-wider uppercase text-[11px] ${
+            className={`relative z-10 px-5 py-2.5 rounded-full transition-colors duration-300 tracking-wider uppercase text-xs ${
               activeSection === "kontak"
                 ? "text-black font-bold"
                 : "hover:text-white"
@@ -870,15 +1073,6 @@ export function App() {
         </nav>
 
         <div className="pointer-events-auto justify-self-end flex items-center space-x-2">
-          {activeSection === "organisasi" && (
-            <button
-              type="button"
-              onClick={openAddOrgModal}
-              className="bg-white hover:bg-neutral-200 text-black px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all duration-300 shadow-lg flex items-center space-x-1.5 cursor-pointer"
-            >
-              <span>+ Tambah Pejabat</span>
-            </button>
-          )}
           <button
             type="button"
             onClick={handleLogout}
@@ -1109,96 +1303,196 @@ export function App() {
         </div>
       </section>
 
-      {/* SECTION 03: STRUKTUR ORGANISASI (TEMA OLD MONEY / MODERN ELEGANT) */}
+      {/* SECTION: STRUKTUR ORGANISASI (OLD MONEY & ELEGANT TIERED DESIGN) */}
       <section
         id="organisasi"
-        className="w-full min-h-screen bg-[#fdfbf7] text-[#332218] px-6 md:px-20 py-40 transition-all border-t border-white/10 relative"
+        className="w-full min-h-screen bg-black text-white px-6 md:px-20 py-40 transition-all border-t border-white/10 relative"
       >
         <div className="max-w-7xl mx-auto w-full">
-          <div className="mb-12 text-center">
-            <p className="text-xs font-semibold uppercase tracking-widest text-[#8c6d46] mb-2">
-              PROFIL SEKOLAH // SECTION 03
+          {/* Header Judul */}
+          <div className="mb-16 text-center">
+            <p className="text-xs font-semibold uppercase tracking-widest text-neutral-400 mb-2">
+              PROFIL SEKOLAH // STRUKTUR ORGANISASI
             </p>
-            <h2 className="text-4xl md:text-5xl font-serif font-bold text-[#332218] tracking-tight">
-              Struktur Organisasi
+            <h2 className="text-4xl md:text-5xl font-serif font-bold text-white tracking-tight">
+              Struktur Organisasi & Pimpinan
             </h2>
-            <div className="w-24 h-1 bg-[#8c6d46] mx-auto mt-4 rounded-full"></div>
-            <p className="text-sm text-[#4a3525]/70 mt-3">
-              Bagan kepemimpinan, manajemen program keahlian, serta unit satuan
-              kerja sekolah.
+            <div className="w-24 h-1 bg-neutral-700 mx-auto mt-4 rounded-full"></div>
+            <p className="text-sm text-neutral-400 mt-3">
+              Oleh : Admin | Tanggal : 03-03-2022
             </p>
           </div>
 
-          {/* Filter Kategori */}
-          <div className="flex flex-wrap justify-center gap-2 mb-12">
-            {[
-              { id: "all", label: "Semua" },
-              { id: "Pimpinan", label: "Pimpinan Sekolah" },
-              { id: "Program Keahlian", label: "Kepala Program" },
-              { id: "Kepala Bengkel", label: "Kepala Bengkel" },
-              { id: "Unit/Bidang", label: "Kepala Unit" },
-            ].map((cat) => (
-              <button
-                key={cat.id}
-                onClick={() => setOrgFilter(cat.id)}
-                className={`px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider transition cursor-pointer border ${
-                  orgFilter === cat.id
-                    ? "bg-[#332218] text-[#fdfbf7] border-[#332218] shadow-md"
-                    : "bg-[#f4ebd0]/40 text-[#4a3525] hover:bg-[#8c6d46] hover:text-white border-[#8c6d46]/30"
-                }`}
-              >
-                {cat.label}
-              </button>
-            ))}
+          {/* KONTEN UTAMA: DIBAGI BERDASARKAN HIERARKI KELAS */}
+          <div className="space-y-20">
+            {/* TIER 1: PIMPINAN SEKOLAH (Spotlight Utama / Kartu Lebih Besar) */}
+            <div>
+              <div className="flex items-center space-x-4 mb-8">
+                <span className="text-xs font-semibold uppercase tracking-widest text-white bg-neutral-900 border border-neutral-800 px-4 py-1.5 rounded-full">
+                  Pimpinan Sekolah
+                </span>
+                <div className="flex-1 h-px bg-neutral-900"></div>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {orgData
+                  .filter((item) => item.kategori === "Pimpinan")
+                  .map((org, index) => (
+                    <div
+                      key={index}
+                      className="bg-gradient-to-b from-neutral-900/90 to-neutral-950 rounded-2xl p-8 border border-neutral-800 hover:border-neutral-600 transition-all duration-300 shadow-2xl relative group overflow-hidden"
+                    >
+                      <div className="absolute top-0 left-0 w-1 h-full bg-white opacity-80"></div>
+                      <span className="text-[10px] font-semibold tracking-widest uppercase text-neutral-400 bg-neutral-950 px-3 py-1 rounded-md border border-neutral-800/80">
+                        {org.kategori}
+                      </span>
+                      <h3 className="text-xl font-serif font-bold text-white mt-4 mb-2 group-hover:text-neutral-200 transition">
+                        {org.nama}
+                      </h3>
+                      <p className="text-xs text-neutral-400 font-medium leading-relaxed">
+                        {org.jabatan}
+                      </p>
+                    </div>
+                  ))}
+              </div>
+            </div>
+
+            {/* TIER 2: KEPALA PROGRAM & BENGKEL */}
+            <div>
+              <div className="flex items-center space-x-4 mb-8">
+                <span className="text-xs font-semibold uppercase tracking-widest text-neutral-300 bg-neutral-900 border border-neutral-800 px-4 py-1.5 rounded-full">
+                  Program Keahlian & Kepala Bengkel
+                </span>
+                <div className="flex-1 h-px bg-neutral-900"></div>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {orgData
+                  .filter(
+                    (item) =>
+                      item.kategori === "Program Keahlian" ||
+                      item.kategori === "Kepala Bengkel",
+                  )
+                  .map((org, index) => (
+                    <div
+                      key={index}
+                      className="bg-neutral-900/60 rounded-xl p-6 border border-neutral-800/80 hover:border-neutral-700 transition-all duration-300 shadow-lg"
+                    >
+                      <span className="text-[10px] font-semibold tracking-widest uppercase text-neutral-400">
+                        {org.kategori}
+                      </span>
+                      <h4 className="text-base font-serif font-semibold text-white mt-2 mb-1">
+                        {org.nama}
+                      </h4>
+                      <p className="text-xs text-neutral-400">{org.jabatan}</p>
+                    </div>
+                  ))}
+              </div>
+            </div>
+
+            {/* TIER 3: UNIT / BIDANG LAINNYA */}
+            <div>
+              <div className="flex items-center space-x-4 mb-8">
+                <span className="text-xs font-semibold uppercase tracking-widest text-neutral-300 bg-neutral-900 border border-neutral-800 px-4 py-1.5 rounded-full">
+                  Unit / Bidang Penunjang
+                </span>
+                <div className="flex-1 h-px bg-neutral-900"></div>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {orgData
+                  .filter((item) => item.kategori === "Unit")
+                  .map((org, index) => (
+                    <div
+                      key={index}
+                      className="bg-neutral-900/40 rounded-xl p-6 border border-neutral-800/60 hover:border-neutral-700 transition-all duration-300 shadow-lg"
+                    >
+                      <span className="text-[10px] font-semibold tracking-widest uppercase text-neutral-500">
+                        {org.kategori}
+                      </span>
+                      <h4 className="text-base font-serif font-semibold text-white mt-2 mb-1">
+                        {org.nama}
+                      </h4>
+                      <p className="text-xs text-neutral-400">{org.jabatan}</p>
+                    </div>
+                  ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION: VISI DAN MISI (DARK THEME & MODERN) */}
+      <section
+        id="visi-misi"
+        className="w-full min-h-screen bg-black text-white px-6 md:px-20 py-40 transition-all border-t border-white/10 relative"
+      >
+        <div className="max-w-7xl mx-auto w-full">
+          {/* Header Judul */}
+          <div className="mb-16 text-center">
+            <p className="text-xs font-semibold uppercase tracking-widest text-neutral-400 mb-2">
+              PROFIL SEKOLAH // VISI & MISI
+            </p>
+            <h2 className="text-4xl md:text-5xl font-serif font-bold text-white tracking-tight">
+              Visi & Misi SMK Negeri 14 Medan
+            </h2>
+            <div className="w-24 h-1 bg-neutral-600 mx-auto mt-4 rounded-full"></div>
+            <p className="text-sm text-neutral-400 mt-3">
+              Oleh : Admin | Tanggal : 17-11-2022
+            </p>
           </div>
 
-          {/* Grid Kartu Organisasi */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {(orgFilter === "all"
-              ? orgData
-              : orgData.filter((item) => item.kategori === orgFilter)
-            ).map((item) => (
-              <div
-                key={item.id}
-                className="bg-white rounded-2xl shadow-sm border border-[#f4ebd0] overflow-hidden flex flex-col justify-between hover:shadow-md transition duration-300 group"
-              >
-                <div className="p-6 flex items-center space-x-4">
-                  <img
-                    src={item.foto}
-                    alt={item.nama}
-                    className="w-16 h-16 rounded-full object-cover border-2 border-[#8c6d46]/40 shadow-sm flex-shrink-0"
-                  />
-                  <div className="overflow-hidden">
-                    <span className="inline-block px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider bg-[#f4ebd0] text-[#4a3525] rounded mb-1">
-                      {item.kategori}
+          {/* Konten Utama (Grid Visi & Misi) */}
+          <div className="space-y-12">
+            {/* Kotak Visi */}
+            <div className="bg-neutral-900/90 rounded-2xl p-8 md:p-10 border border-neutral-800 shadow-xl relative overflow-hidden group hover:border-neutral-700 transition duration-300">
+              <div className="absolute top-0 left-0 w-1.5 h-full bg-white"></div>
+              <span className="inline-block px-3 py-1 text-[10px] font-semibold uppercase tracking-widest bg-white text-black rounded-full mb-4">
+                A. Visi Sekolah
+              </span>
+              <h3 className="text-xl md:text-2xl font-serif font-medium text-neutral-100 leading-relaxed italic">
+                &ldquo;Terwujudnya Lembaga Pendidikan Kejuruan yang menghasilkan
+                peserta didik yang berkarakter nasional, berkemampuan global dan
+                menjadi sekolah rujukan.&rdquo;
+              </h3>
+            </div>
+
+            {/* Kotak Misi */}
+            <div className="bg-neutral-900/90 rounded-2xl p-8 md:p-10 border border-neutral-800 shadow-xl relative overflow-hidden">
+              <div className="absolute top-0 left-0 w-1.5 h-full bg-neutral-500"></div>
+              <span className="inline-block px-3 py-1 text-[10px] font-semibold uppercase tracking-widest bg-neutral-800 text-neutral-300 rounded-full mb-6">
+                B. Misi Sekolah
+              </span>
+              <p className="text-xs md:text-sm text-neutral-400 mb-6">
+                Untuk mencapai VISI tersebut, SMK Negeri 14 Medan mengembangkan
+                misi sebagai berikut:
+              </p>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {[
+                  "Melakukan Pembelajaran dengan memegang teguh nilai-nilai bangsa Indonesia berbasis teknologi, komunikasi dan informasi.",
+                  "Menyiapkan peserta didik yang memiliki kecakapan hidup untuk mampu mengatasi masalahnya.",
+                  "Menyiapkan peserta didik yang memiliki jiwa wirausaha untuk mampu menciptakan lapangan kerja.",
+                  "Memperkuat standart kurikulum dan penilaian hasil belajar peserta didik.",
+                  "Meningkatkan pengelolaan sekolah dan jaminan kualitas yang berbasis pada standart mutu.",
+                  "Menjadikan lembaga pendidikan sebagai patok duga bagi pengembangan sekolah.",
+                  "Mengembangkan lembaga dengan menjalin kemitraan baik dengan institusi nasional maupun internasional.",
+                  "Mengembangkan proses pembelajaran dengan bahasa komunikasi global.",
+                ].map((misiText, index) => (
+                  <div
+                    key={index}
+                    className="flex items-start space-x-4 p-4 rounded-xl bg-neutral-950/60 border border-neutral-800/80 hover:border-neutral-700 transition"
+                  >
+                    <span className="flex-shrink-0 w-7 h-7 rounded-full bg-neutral-800 text-neutral-300 font-bold text-xs flex items-center justify-center border border-neutral-700">
+                      0{index + 1}
                     </span>
-                    <h4
-                      className="font-serif font-bold text-base text-[#332218] truncate"
-                      title={item.nama}
-                    >
-                      {item.nama}
-                    </h4>
-                    <p className="text-xs text-[#5c4033] font-medium mt-0.5 line-clamp-2">
-                      {item.jabatan}
+                    <p className="text-xs md:text-sm text-neutral-300 leading-relaxed pt-1">
+                      {misiText}
                     </p>
                   </div>
-                </div>
-                <div className="bg-[#fdfbf7] px-6 py-3 border-t border-[#f4ebd0] flex justify-end space-x-2">
-                  <button
-                    onClick={() => openEditOrgModal(item)}
-                    className="text-xs bg-[#f4ebd0] hover:bg-[#8c6d46] hover:text-white text-[#332218] px-3 py-1.5 rounded transition font-medium flex items-center gap-1 cursor-pointer"
-                  >
-                    <span>Edit</span>
-                  </button>
-                  <button
-                    onClick={() => handleDeleteOrg(item.id)}
-                    className="text-xs bg-red-50 hover:bg-red-600 hover:text-white text-red-700 px-3 py-1.5 rounded transition font-medium flex items-center gap-1 cursor-pointer"
-                  >
-                    <span>Hapus</span>
-                  </button>
-                </div>
+                ))}
               </div>
-            ))}
+            </div>
           </div>
         </div>
       </section>
@@ -1346,6 +1640,13 @@ export function App() {
                   onClick={(e) => scrollToSection(e, "lokasi")}
                   className="hover:text-white transition-colors"
                 >
+                  <a
+                    href="#visi-misi"
+                    onClick={(e) => scrollToSection(e, "visi-misi")}
+                    className="hover:text-white transition-colors"
+                  >
+                    Visi & Misi
+                  </a>
                   Peta
                 </a>
               </div>
