@@ -206,16 +206,11 @@ export function App() {
     "visi",
   );
 
-  const [selectedRoute, setSelectedRoute] = useState<{
-    name: string;
-    distance: string;
-    time: string;
-  }>({
+  const [selectedRoute] = useState({
     name: "Medan",
     distance: "3.8 km",
     time: "11 Min",
   });
-
   const [activeSection, setActiveSection] = useState<string>("hero-top");
   const [indicatorStyle, setIndicatorStyle] = useState({
     left: 0,
