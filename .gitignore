@@ -22,3 +22,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+.ollama/
+node_modules/
+dist/
+.env

@@ -2,7 +2,7 @@ import React from "react";
 
 export const InteractiveHero: React.FC = () => {
   return (
-    <div className="relative w-screen h-screen bg-white overflow-hidden flex flex-col justify-between">
+    <div className="relative w-full h-screen bg-white overflow-hidden flex flex-col justify-between">
       {/* Latar Belakang Gambar Fullscreen */}
       <div className="absolute inset-0 w-full h-full z-0 overflow-hidden bg-white">
         <img
