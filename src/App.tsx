@@ -229,6 +229,7 @@ const threePillars = [
 
 const schoolContacts = {
   websiteUrl: "https://smkn14-medan.vercel.app/",
+  officialWebsiteUrl: "https://www.smkn14medan.sch.id/",
   address:
     "Jl. Karya Dalam No.26, Karang Berombak, Kec. Medan Barat, Kota Medan, Sumatera Utara 20117",
   whatsappNumber: "",
@@ -592,7 +593,7 @@ export function App() {
 
   const emailHref = `mailto:${schoolContacts.officialEmail}?subject=${encodeURIComponent(schoolContacts.emailSubject)}`;
 
-  const qrCodeApiUrl = `https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=${encodeURIComponent(schoolContacts.websiteUrl)}`;
+  const qrCodeApiUrl = `https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=${encodeURIComponent(schoolContacts.officialWebsiteUrl)}`;
 
   const googleMapsDirectionsHref = `https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(activeRoute.originQuery)}&destination=SMK+Negeri+14+Medan`;
 
@@ -737,8 +738,8 @@ export function App() {
 
   return (
     <main className="relative w-full bg-[#0a0a0a] text-white selection:bg-white selection:text-black scroll-smooth font-['Plus_Jakarta_Sans',sans-serif] min-h-screen overflow-x-clip">
-      <div className="absolute top-0 left-1/4 w-[300px] md:w-[600px] h-[300px] md:h-[600px] bg-neutral-800/30 rounded-full blur-[100px] md:blur-[140px] pointer-events-none -z-10" />
-      <div className="absolute top-1/2 right-0 w-[200px] md:w-[500px] h-[200px] md:h-[500px] bg-zinc-700/20 rounded-full blur-[100px] md:blur-[140px] pointer-events-none -z-10" />
+      <div className="absolute top-0 left-1/4 w-[35%] h-[35rem] bg-neutral-800/30 rounded-full blur-[120px] pointer-events-none -z-10" />
+      <div className="absolute top-1/2 right-0 w-[30%] h-[30rem] bg-zinc-700/20 rounded-full blur-[120px] pointer-events-none -z-10" />
 
       {/* HEADER & NAVBAR DESKTOP */}
       <header className="fixed top-0 left-0 w-full z-50 flex items-center justify-between px-4 md:px-10 py-4 md:py-6 pointer-events-none">
@@ -757,7 +758,7 @@ export function App() {
             }}
           />
           <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
-          <span className="text-[11px] font-bold tracking-[0.18em] text-white uppercase">
+          <span className="text-xs font-bold tracking-[0.18em] text-white uppercase">
             SMKN 14 MEDAN
           </span>
         </a>
@@ -802,7 +803,7 @@ export function App() {
               }}
               href={`#${menu.id}`}
               onClick={(e) => scrollToSection(e, menu.id)}
-              className={`relative z-10 px-2.5 lg:px-3.5 py-2 lg:py-2.5 rounded-full transition-colors duration-300 tracking-wider uppercase text-[11px] lg:text-xs whitespace-nowrap shrink-0 ${
+              className={`relative z-10 px-2.5 lg:px-3.5 py-2 lg:py-2.5 rounded-full transition-colors duration-300 tracking-wider uppercase text-xs whitespace-nowrap shrink-0 ${
                 activeSection === menu.id
                   ? "text-black font-bold"
                   : "text-neutral-300 hover:text-white"
@@ -813,7 +814,7 @@ export function App() {
           ))}
         </nav>
 
-        <div className="hidden xl:block w-[180px] pointer-events-none"></div>
+        <div className="hidden xl:block w-[12%] pointer-events-none"></div>
       </header>
 
       {/* FLOATING BOTTOM NAVIGATION KHUSUS MOBILE (md:hidden) */}
@@ -835,7 +836,7 @@ export function App() {
                 }}
                 href={`#${menu.id}`}
                 onClick={(e) => scrollToSection(e, menu.id)}
-                className={`shrink-0 flex items-center gap-1.5 px-3.5 py-2.5 rounded-full text-[11px] uppercase tracking-wider transition-all duration-300 whitespace-nowrap ${
+                className={`shrink-0 flex items-center gap-1.5 px-3.5 py-2.5 rounded-full text-xs uppercase tracking-wider transition-all duration-300 whitespace-nowrap ${
                   isActive
                     ? "bg-white text-black font-extrabold shadow-md"
                     : "text-neutral-300 font-semibold hover:text-white active:bg-white/10"
@@ -852,7 +853,7 @@ export function App() {
       {/* HERO SECTION */}
       <section
         id="hero-top"
-        className="relative w-full min-h-screen overflow-hidden text-black pt-16 md:pt-0 bg-[#0d0d0d] flex items-center justify-center"
+        className="relative w-[100vw] min-h-screen overflow-hidden text-black pt-16 md:pt-0 bg-[#0d0d0d] flex items-center justify-center"
       >
         <div className="absolute inset-0 overflow-hidden">
           <img
@@ -873,28 +874,28 @@ export function App() {
         <div className="relative z-10 w-full min-h-screen flex flex-col px-4 md:px-8 lg:px-12 py-6 pt-12 md:pt-6 justify-center">
           <main className="flex-1 flex flex-col lg:flex-row items-center justify-center lg:justify-between gap-8 mt-4 md:mt-0">
             <div className="w-full lg:w-[55%] text-left lg:pl-16 xl:pl-24 mt-16 lg:mt-0">
-              <div className="bg-white/40 backdrop-blur-md border border-white/50 p-8 lg:p-12 rounded-[32px] shadow-2xl">
-                <h1 className="text-[42px] md:text-[60px] lg:text-[68px] font-[900] leading-[0.95] tracking-tight text-black drop-shadow-sm">
+              <div className="bg-white/40 backdrop-blur-md border border-white/50 p-8 lg:p-12 rounded-[2rem] shadow-2xl">
+                <h1 className="text-4xl md:text-6xl lg:text-7xl font-[900] leading-[0.95] tracking-tight text-black drop-shadow-sm">
                   SMK NEGERI 14
                   <br />
                   <span className="font-[800] uppercase">MEDAN</span>
                 </h1>
 
                 <div className="flex flex-wrap gap-2 mt-6">
-                  <span className="bg-white/90 backdrop-blur-sm border border-white/60 px-4 py-1.5 rounded-full text-[11px] text-black font-bold tracking-wide shadow-sm hover:bg-black hover:text-white transition-colors cursor-default">
+                  <span className="bg-white/90 backdrop-blur-sm border border-white/60 px-4 py-1.5 rounded-full text-xs text-black font-bold tracking-wide shadow-sm hover:bg-black hover:text-white transition-colors cursor-default">
                     BERWAWASAN TINGGI
                   </span>
-                  <span className="bg-white/90 backdrop-blur-sm border border-white/60 px-4 py-1.5 rounded-full text-[11px] text-black font-bold tracking-wide shadow-sm hover:bg-black hover:text-white transition-colors cursor-default">
+                  <span className="bg-white/90 backdrop-blur-sm border border-white/60 px-4 py-1.5 rounded-full text-xs text-black font-bold tracking-wide shadow-sm hover:bg-black hover:text-white transition-colors cursor-default">
                     BERKOMPETENSI
                   </span>
-                  <span className="bg-white/90 backdrop-blur-sm border border-white/60 px-4 py-1.5 rounded-full text-[11px] text-black font-bold tracking-wide shadow-sm hover:bg-black hover:text-white transition-colors cursor-default">
+                  <span className="bg-white/90 backdrop-blur-sm border border-white/60 px-4 py-1.5 rounded-full text-xs text-black font-bold tracking-wide shadow-sm hover:bg-black hover:text-white transition-colors cursor-default">
                     SIAP BEKERJA
                   </span>
                 </div>
 
                 <form
                   onSubmit={handleSearch}
-                  className="bg-white/90 backdrop-blur-md border border-white/80 mt-8 rounded-full flex items-center px-4 py-3 w-full max-w-[520px] shadow-lg"
+                  className="bg-white/90 backdrop-blur-md border border-white/80 mt-8 rounded-full flex items-center px-4 py-3 w-full lg:w-[88%] shadow-lg"
                 >
                   <button type="submit" className="cursor-pointer">
                     <svg
@@ -916,33 +917,33 @@ export function App() {
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                     placeholder="Cari Menu: Jurusan, Organisasi, Peta..."
-                    className="bg-transparent outline-none flex-1 ml-3 text-[13px] text-black placeholder:text-zinc-500 font-medium"
+                    className="bg-transparent outline-none flex-1 ml-3 text-sm text-black placeholder:text-zinc-500 font-medium"
                   />
                 </form>
               </div>
             </div>
 
-            <div className="w-full max-w-[290px] lg:mr-16 mb-10 lg:mb-0">
-              <div className="bg-white/85 backdrop-blur-md border border-white/60 rounded-[24px] p-6 text-center shadow-2xl">
-                <p className="text-[10px] font-bold tracking-wide mb-3 text-black uppercase">
+            <div className="w-[88%] sm:w-[55%] lg:w-[23%] lg:mr-16 mb-10 lg:mb-0">
+              <div className="bg-white/85 backdrop-blur-md border border-white/60 rounded-[1.5rem] p-6 text-center shadow-2xl">
+                <p className="text-xs font-bold tracking-wide mb-3 text-black uppercase">
                   SCAN QR UNTUK AKSES PORTAL WEBSITE SEKOLAH
                 </p>
                 <div className="bg-white rounded-xl p-3 mx-auto w-fit shadow-inner border border-gray-200">
                   <img
                     src={qrCodeApiUrl}
                     alt="QR Code Portal SMKN 14 Medan"
-                    className="w-[140px] h-[140px]"
+                    className="w-36 h-36"
                   />
                 </div>
                 <a
-                  href={schoolContacts.websiteUrl}
+                  href={schoolContacts.officialWebsiteUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-block mt-3 px-3 py-1 rounded-full bg-black text-white text-[10px] font-mono tracking-wide hover:bg-neutral-800 transition"
+                  className="inline-block mt-3 px-3 py-1 rounded-full bg-black text-white text-xs font-mono tracking-wide hover:bg-neutral-800 transition"
                 >
-                  smkn14-medan.vercel.app
+                  smkn14medan.sch.id
                 </a>
-                <p className="text-[11px] text-zinc-700 mt-3 leading-relaxed font-medium px-1">
+                <p className="text-xs text-zinc-700 mt-3 leading-relaxed font-medium px-1">
                   Websites yang anda buka sekarang adalah Websites yang di
                   bangun Oleh Ananda Kami Raziq Hanan Fadillah, Salah Satu Siswa
                   SMK NEGERI 14 MEDAN
@@ -956,7 +957,7 @@ export function App() {
       {/* STRIP STATISTIK KUNCI SEKOLAH */}
       <section
         aria-label="Statistik Kunci SMKN 14 Medan"
-        className="w-full bg-[#070707] border-y border-white/10 px-6 md:px-20 py-10 md:py-14 relative z-20"
+        className="w-[100vw] bg-[#070707] border-y border-white/10 px-6 md:px-20 py-10 md:py-14 relative z-20"
       >
         <div className="max-w-7xl mx-auto w-full">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
@@ -965,10 +966,10 @@ export function App() {
                 key={stat.code}
                 type="button"
                 onClick={() => scrollToSection(null, stat.targetId)}
-                className="group text-left bg-gradient-to-b from-neutral-900/90 to-neutral-950 rounded-[24px] p-5 md:p-7 border border-white/10 hover:border-emerald-400/50 transition-all duration-300 shadow-xl flex flex-col justify-between cursor-pointer"
+                className="group text-left bg-gradient-to-b from-neutral-900/90 to-neutral-950 rounded-[1.5rem] p-5 md:p-7 border border-white/10 hover:border-emerald-400/50 transition-all duration-300 shadow-xl flex flex-col justify-between cursor-pointer"
               >
                 <div className="flex items-center justify-between gap-2 mb-3">
-                  <span className="text-[10px] font-mono tracking-[0.2em] text-neutral-500 uppercase">
+                  <span className="text-xs font-mono tracking-[0.2em] text-neutral-500 uppercase">
                     {stat.code}
                   </span>
                   <span className="w-2 h-2 rounded-full bg-emerald-400/70 group-hover:bg-emerald-400 transition-colors" />
@@ -981,7 +982,7 @@ export function App() {
                   <p className="text-xs md:text-sm font-bold text-neutral-200 mt-1.5">
                     {stat.label}
                   </p>
-                  <p className="text-[11px] text-neutral-500 mt-0.5 leading-snug">
+                  <p className="text-xs text-neutral-500 mt-0.5 leading-snug">
                     {stat.sublabel}
                   </p>
                 </div>
@@ -994,14 +995,14 @@ export function App() {
       {/* SECTION 01: SEJARAH */}
       <section
         id="latar-belakang"
-        className="w-full min-h-screen bg-[#0a0a0a] text-white py-24 md:py-36 relative overflow-hidden flex flex-col justify-center"
+        className="w-[100vw] min-h-screen bg-[#0a0a0a] text-white py-24 md:py-36 relative overflow-hidden flex flex-col justify-center"
       >
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:4rem_4rem] pointer-events-none" />
 
         <div className="max-w-7xl mx-auto w-full px-6 md:px-20 mb-12 relative z-10">
           <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-neutral-900/80 border border-white/10 mb-6 backdrop-blur-md">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-            <span className="text-[10px] font-semibold uppercase tracking-[0.25em] text-neutral-400">
+            <span className="text-xs font-semibold uppercase tracking-[0.25em] text-neutral-400">
               ARSIP SEJARAH // KRONOLOGI VOKASI
             </span>
           </div>
@@ -1013,7 +1014,7 @@ export function App() {
                 Pendidikan Vokasi
               </span>
             </h2>
-            <p className="text-xs md:text-sm text-neutral-400 max-w-md font-normal leading-relaxed">
+            <p className="text-xs md:text-sm text-neutral-400 w-full lg:w-[38%] font-normal leading-relaxed">
               Klik tombol <strong className="text-white">"Baca Detail"</strong>{" "}
               untuk membuka kotak secara mulus melebar ke arah kanan.
             </p>
@@ -1025,10 +1026,10 @@ export function App() {
           tabIndex={0}
         >
           <div
-            className={`flex-shrink-0 bg-[#121212] rounded-[32px] p-8 md:p-12 border border-white/10 shadow-2xl flex flex-col justify-between snap-start transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${expandedHistoryId === 1 ? "w-[90vw] md:w-[820px] bg-neutral-900 border-white/30 shadow-[0_20px_50px_rgba(0,0,0,0.8)]" : "w-[85vw] md:w-[460px]"}`}
+            className={`flex-shrink-0 bg-[#121212] rounded-[2rem] p-8 md:p-12 border border-white/10 shadow-2xl flex flex-col justify-between snap-start transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${expandedHistoryId === 1 ? "w-[90%] md:w-[68%] bg-neutral-900 border-white/30 shadow-[0_20px_50px_rgba(0,0,0,0.8)]" : "w-[85%] md:w-[38%]"}`}
           >
             <div>
-              <span className="text-[10px] font-mono tracking-[0.3em] text-neutral-500 uppercase block mb-4">
+              <span className="text-xs font-mono tracking-[0.3em] text-neutral-500 uppercase block mb-4">
                 [ 01 — LATAR BELAKANG ]
               </span>
 
@@ -1061,7 +1062,7 @@ export function App() {
                 </div>
 
                 <div
-                  className={`overflow-hidden transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${expandedHistoryId === 1 ? "opacity-100 max-h-[500px] md:border-l md:border-white/10 md:pl-8" : "opacity-0 max-h-0 md:max-h-[500px]"}`}
+                  className={`overflow-hidden transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${expandedHistoryId === 1 ? "opacity-100 max-h-[32rem] md:border-l md:border-white/10 md:pl-8" : "opacity-0 max-h-0 md:max-h-[32rem]"}`}
                 >
                   <div className="space-y-4 text-xs md:text-sm text-neutral-300 font-normal leading-relaxed">
                     <div className="bg-black/40 p-4 rounded-2xl border border-white/5">
@@ -1087,13 +1088,13 @@ export function App() {
           </div>
 
           <div
-            className={`flex-shrink-0 bg-[#121212] rounded-[32px] p-8 md:p-12 border border-white/10 shadow-2xl flex flex-col justify-between snap-start relative overflow-hidden transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${expandedHistoryId === 2 ? "w-[90vw] md:w-[820px] bg-neutral-900 border-white/30 shadow-[0_20px_50px_rgba(0,0,0,0.8)]" : "w-[85vw] md:w-[460px]"}`}
+            className={`flex-shrink-0 bg-[#121212] rounded-[2rem] p-8 md:p-12 border border-white/10 shadow-2xl flex flex-col justify-between snap-start relative overflow-hidden transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${expandedHistoryId === 2 ? "w-[90%] md:w-[68%] bg-neutral-900 border-white/30 shadow-[0_20px_50px_rgba(0,0,0,0.8)]" : "w-[85%] md:w-[38%]"}`}
           >
-            <div className="absolute -bottom-10 -right-10 text-[180px] font-bold text-white/[0.02] pointer-events-none">
+            <div className="absolute -bottom-10 -right-10 text-9xl font-bold text-white/[0.02] pointer-events-none select-none">
               2011
             </div>
             <div className="relative z-10">
-              <span className="text-[10px] font-mono tracking-[0.3em] text-neutral-500 uppercase block mb-4">
+              <span className="text-xs font-mono tracking-[0.3em] text-neutral-500 uppercase block mb-4">
                 [ 02 — TAHAP PERINTISAN ]
               </span>
 
@@ -1129,7 +1130,7 @@ export function App() {
                 </div>
 
                 <div
-                  className={`overflow-hidden transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${expandedHistoryId === 2 ? "opacity-100 max-h-[500px] md:border-l md:border-white/10 md:pl-8" : "opacity-0 max-h-0 md:max-h-[500px]"}`}
+                  className={`overflow-hidden transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${expandedHistoryId === 2 ? "opacity-100 max-h-[32rem] md:border-l md:border-white/10 md:pl-8" : "opacity-0 max-h-0 md:max-h-[32rem]"}`}
                 >
                   <div className="space-y-4 text-xs md:text-sm text-neutral-300 font-normal leading-relaxed">
                     <div className="bg-black/40 p-4 rounded-2xl border border-white/5">
@@ -1154,13 +1155,13 @@ export function App() {
           </div>
 
           <div
-            className={`flex-shrink-0 bg-white text-black rounded-[32px] p-8 md:p-12 border border-white shadow-2xl flex flex-col justify-between snap-start relative overflow-hidden transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${expandedHistoryId === 3 ? "w-[90vw] md:w-[820px] bg-neutral-100 border-black/30 shadow-2xl" : "w-[85vw] md:w-[460px]"}`}
+            className={`flex-shrink-0 bg-white text-black rounded-[2rem] p-8 md:p-12 border border-white shadow-2xl flex flex-col justify-between snap-start relative overflow-hidden transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${expandedHistoryId === 3 ? "w-[90%] md:w-[68%] bg-neutral-100 border-black/30 shadow-2xl" : "w-[85%] md:w-[38%]"}`}
           >
-            <div className="absolute -bottom-10 -right-10 text-[180px] font-bold text-black/[0.03] pointer-events-none">
+            <div className="absolute -bottom-10 -right-10 text-9xl font-bold text-black/[0.03] pointer-events-none select-none">
               2017
             </div>
             <div className="relative z-10">
-              <span className="text-[10px] font-mono tracking-[0.3em] text-neutral-500 uppercase block mb-4">
+              <span className="text-xs font-mono tracking-[0.3em] text-neutral-500 uppercase block mb-4">
                 [ 03 — TRANSFORMASI RESMI ]
               </span>
 
@@ -1196,7 +1197,7 @@ export function App() {
                 </div>
 
                 <div
-                  className={`overflow-hidden transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${expandedHistoryId === 3 ? "opacity-100 max-h-[500px] md:border-l md:border-neutral-300 md:pl-8" : "opacity-0 max-h-0 md:max-h-[500px]"}`}
+                  className={`overflow-hidden transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${expandedHistoryId === 3 ? "opacity-100 max-h-[32rem] md:border-l md:border-neutral-300 md:pl-8" : "opacity-0 max-h-0 md:max-h-[32rem]"}`}
                 >
                   <div className="space-y-4 text-xs md:text-sm text-neutral-700 font-normal leading-relaxed">
                     <div className="bg-white p-4 rounded-2xl border border-neutral-200 shadow-sm">
@@ -1219,10 +1220,10 @@ export function App() {
           </div>
 
           <div
-            className={`flex-shrink-0 bg-gradient-to-br from-neutral-900 to-neutral-950 rounded-[32px] p-8 md:p-12 border border-white/10 shadow-2xl flex flex-col justify-between snap-start transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${expandedHistoryId === 4 ? "w-[90vw] md:w-[820px] bg-neutral-900 border-white/30 shadow-[0_20px_50px_rgba(0,0,0,0.8)]" : "w-[85vw] md:w-[460px]"}`}
+            className={`flex-shrink-0 bg-gradient-to-br from-neutral-900 to-neutral-950 rounded-[2rem] p-8 md:p-12 border border-white/10 shadow-2xl flex flex-col justify-between snap-start transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${expandedHistoryId === 4 ? "w-[90%] md:w-[68%] bg-neutral-900 border-white/30 shadow-[0_20px_50px_rgba(0,0,0,0.8)]" : "w-[85%] md:w-[38%]"}`}
           >
             <div>
-              <span className="text-[10px] font-mono tracking-[0.3em] text-neutral-500 uppercase block mb-4">
+              <span className="text-xs font-mono tracking-[0.3em] text-neutral-500 uppercase block mb-4">
                 [ 04 — SPASIAL KAMPUS ]
               </span>
 
@@ -1258,7 +1259,7 @@ export function App() {
                 </div>
 
                 <div
-                  className={`overflow-hidden transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${expandedHistoryId === 4 ? "opacity-100 max-h-[500px] md:border-l md:border-white/10 md:pl-8" : "opacity-0 max-h-0 md:max-h-[500px]"}`}
+                  className={`overflow-hidden transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${expandedHistoryId === 4 ? "opacity-100 max-h-[32rem] md:border-l md:border-white/10 md:pl-8" : "opacity-0 max-h-0 md:max-h-[32rem]"}`}
                 >
                   <div className="space-y-4 text-xs md:text-sm text-neutral-300 font-normal leading-relaxed">
                     <div className="bg-black/40 p-4 rounded-2xl border border-white/5">
@@ -1288,14 +1289,14 @@ export function App() {
       {/* SECTION 02: SAMBUTAN KEPALA SEKOLAH */}
       <section
         id="sambutan"
-        className="w-full min-h-screen bg-[#070707] text-white px-6 md:px-20 py-20 md:py-40 flex flex-col justify-center border-t border-white/5 relative overflow-hidden"
+        className="w-[100vw] min-h-screen bg-[#070707] text-white px-6 md:px-20 py-20 md:py-40 flex flex-col justify-center border-t border-white/5 relative overflow-hidden"
       >
         <div className="max-w-7xl mx-auto w-full relative z-10">
           <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-10 md:mb-20 gap-8">
             <div>
               <div className="inline-flex items-center space-x-3 px-4 py-1.5 rounded-full bg-neutral-900 border border-white/10 mb-6">
                 <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                <span className="text-[10px] font-semibold uppercase tracking-[0.25em] text-neutral-400">
+                <span className="text-xs font-semibold uppercase tracking-[0.25em] text-neutral-400">
                   HALAMAN SAMBUTAN KEPALA SEKOLAH
                 </span>
               </div>
@@ -1304,14 +1305,14 @@ export function App() {
                 <span className="font-normal text-neutral-400">Sekolah</span>
               </h2>
             </div>
-            <p className="text-sm md:text-base text-neutral-400 max-w-md font-normal leading-relaxed">
+            <p className="text-sm md:text-base text-neutral-400 w-full lg:w-[38%] font-normal leading-relaxed">
               Pimpinan institusi dalam memimpin dan mengembangkan ekosistem
               pendidikan vokasi yang unggul dan berkarakter.
             </p>
           </div>
 
           <div
-            className={`bg-gradient-to-br from-neutral-900 to-neutral-950 rounded-[32px] p-8 md:p-12 border border-white/15 shadow-2xl transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${isSambutanExpanded ? "max-w-6xl mx-auto border-white/30 shadow-[0_20px_60px_rgba(0,0,0,0.9)]" : "max-w-4xl mx-auto"}`}
+            className={`bg-gradient-to-br from-neutral-900 to-neutral-950 rounded-[2rem] p-8 md:p-12 border border-white/15 shadow-2xl transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] mx-auto ${isSambutanExpanded ? "w-full lg:w-[92%] border-white/30 shadow-[0_20px_60px_rgba(0,0,0,0.9)]" : "w-full lg:w-[72%]"}`}
           >
             <div
               className={`grid transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${isSambutanExpanded ? "grid-cols-1 lg:grid-cols-12 gap-10 items-center" : "grid-cols-1 lg:grid-cols-12 gap-8 items-stretch"}`}
@@ -1335,7 +1336,7 @@ export function App() {
                 className={`${isSambutanExpanded ? "lg:col-span-4" : "lg:col-span-7"} flex flex-col justify-between`}
               >
                 <div className="space-y-4">
-                  <div className="inline-block px-3.5 py-1 rounded-full bg-white/10 border border-white/15 text-[11px] font-mono uppercase tracking-wider text-emerald-400 mb-1">
+                  <div className="inline-block px-3.5 py-1 rounded-full bg-white/10 border border-white/15 text-xs font-mono uppercase tracking-wider text-emerald-400 mb-1">
                     PROFIL & BIODATA PIMPINAN
                   </div>
                   <div>
@@ -1373,7 +1374,7 @@ export function App() {
               {isSambutanExpanded && (
                 <div className="lg:col-span-4 flex flex-col justify-between border-t lg:border-t-0 lg:border-l border-white/15 pt-6 lg:pt-0 lg:pl-8 animate-fade-in">
                   <div>
-                    <span className="text-[10px] font-mono tracking-[0.25em] text-neutral-500 uppercase block mb-2">
+                    <span className="text-xs font-mono tracking-[0.25em] text-neutral-500 uppercase block mb-2">
                       [ KATA SAMBUTAN ]
                     </span>
                     <p className="text-base font-semibold text-white mb-3">
@@ -1405,7 +1406,7 @@ export function App() {
       {/* SECTION: STRUKTUR ORGANISASI & EKSTRAKURIKULER */}
       <section
         id="organisasi"
-        className="w-full min-h-screen bg-black text-white px-6 md:px-20 py-20 md:py-40 transition-all border-t border-white/10 relative scroll-mt-24"
+        className="w-[100vw] min-h-screen bg-black text-white px-6 md:px-20 py-20 md:py-40 transition-all border-t border-white/10 relative scroll-mt-24"
       >
         <div className="max-w-7xl mx-auto w-full space-y-24">
           <div>
@@ -1417,7 +1418,7 @@ export function App() {
                 <h2 className="text-4xl md:text-5xl font-serif font-bold text-white tracking-tight">
                   Struktur Pimpinan Utama
                 </h2>
-                <div className="w-24 h-1 bg-neutral-700 mt-4 rounded-full"></div>
+                <div className="w-[18%] h-1 bg-neutral-700 mt-4 rounded-full"></div>
               </div>
             </div>
 
@@ -1431,7 +1432,7 @@ export function App() {
                   >
                     <div>
                       <div className="flex items-center justify-between mb-3">
-                        <span className="text-[10px] font-semibold tracking-widest uppercase text-neutral-300 bg-neutral-950 px-3 py-1 rounded-md border border-neutral-800/80">
+                        <span className="text-xs font-semibold tracking-widest uppercase text-neutral-300 bg-neutral-950 px-3 py-1 rounded-md border border-neutral-800/80">
                           {org.jabatan.includes("Kepala Sekolah") &&
                           !org.jabatan.includes("Wakil")
                             ? "Kepala Sekolah"
@@ -1449,7 +1450,7 @@ export function App() {
                       </p>
                     </div>
 
-                    <div className="mt-6 pt-4 border-t border-white/5 flex items-center justify-between text-[10px] font-mono text-neutral-500">
+                    <div className="mt-6 pt-4 border-t border-white/5 flex items-center justify-between text-xs font-mono text-neutral-500">
                       <span>SMKN 14 MEDAN</span>
                       <span className="text-neutral-300">PIMPINAN</span>
                     </div>
@@ -1469,7 +1470,7 @@ export function App() {
                   Organisasi & Ekstrakurikuler
                 </h3>
               </div>
-              <p className="text-xs md:text-sm text-neutral-400 max-w-md leading-relaxed">
+              <p className="text-xs md:text-sm text-neutral-400 w-full lg:w-[38%] leading-relaxed">
                 Wadah pembinaan karakter, kepemimpinan, olahraga, dan
                 kreativitas siswa SMK Negeri 14 Medan.
               </p>
@@ -1482,7 +1483,7 @@ export function App() {
                   className="p-6 md:p-7 border-r border-b border-white/10 bg-[#070707] hover:bg-neutral-950 transition-colors flex flex-col justify-between gap-6"
                 >
                   <div className="space-y-3">
-                    <div className="flex items-center justify-between text-[11px] font-mono text-neutral-500">
+                    <div className="flex items-center justify-between text-xs font-mono text-neutral-500">
                       <span>{ekskul.code}</span>
                       <span className="uppercase tracking-wider text-neutral-400">
                         {ekskul.bidang}
@@ -1496,7 +1497,7 @@ export function App() {
                     </p>
                   </div>
 
-                  <div className="pt-3 border-t border-white/10 flex items-center justify-between text-[10px] font-mono uppercase tracking-wider text-neutral-500">
+                  <div className="pt-3 border-t border-white/10 flex items-center justify-between text-xs font-mono uppercase tracking-wider text-neutral-500">
                     <span>SMKN 14 MEDAN</span>
                     <span className="text-neutral-300">EKSKUL</span>
                   </div>
@@ -1516,7 +1517,7 @@ export function App() {
       {/* SECTION: VISI DAN MISI */}
       <section
         id="visi-misi"
-        className="w-full min-h-screen bg-[#050505] text-white px-6 md:px-20 py-24 md:py-36 border-t border-white/10 relative scroll-mt-24 flex flex-col justify-center"
+        className="w-[100vw] min-h-screen bg-[#050505] text-white px-6 md:px-20 py-24 md:py-36 border-t border-white/10 relative scroll-mt-24 flex flex-col justify-center"
       >
         <div className="max-w-7xl mx-auto w-full">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-8 border-b border-white/10">
@@ -1552,11 +1553,11 @@ export function App() {
           </div>
 
           {activeVisiMisiTab === "visi" && (
-            <div className="py-14 md:py-20 max-w-4xl space-y-6">
+            <div className="py-14 md:py-20 w-full lg:w-[75%] space-y-6">
               <p className="text-xs uppercase tracking-widest text-neutral-500">
                 Visi Sekolah
               </p>
-              <blockquote className="border-l-2 border-white/40 pl-6 md:pl-8 text-2xl md:text-4xl font-medium text-neutral-100 leading-relaxed">
+              <blockquote className="border-l-[2px] border-white/40 pl-6 md:pl-8 text-2xl md:text-4xl font-medium text-neutral-100 leading-relaxed">
                 {visiStatement}
               </blockquote>
             </div>
@@ -1574,7 +1575,7 @@ export function App() {
                     className="border-t border-white/20 pt-6 space-y-5"
                   >
                     <div>
-                      <p className="font-mono text-[11px] uppercase tracking-widest text-neutral-500">
+                      <p className="font-mono text-xs uppercase tracking-widest text-neutral-500">
                         {pillar.code}
                       </p>
                       <h3 className="text-xl font-bold text-white mt-1">
@@ -1613,7 +1614,7 @@ export function App() {
       {/* SECTION 04: PETA LOKASI */}
       <section
         id="peta"
-        className="w-full min-h-screen bg-[#050505] text-white px-6 md:px-20 py-20 md:py-40 flex flex-col justify-center relative overflow-hidden border-t border-white/5"
+        className="w-[100vw] min-h-screen bg-[#050505] text-white px-6 md:px-20 py-20 md:py-40 flex flex-col justify-center relative overflow-hidden border-t border-white/5"
       >
         <div className="max-w-7xl mx-auto w-full relative z-10">
           <div className="mb-12">
@@ -1668,10 +1669,10 @@ export function App() {
 
                 <div>
                   <div className="flex items-center justify-between gap-2">
-                    <span className="text-[11px] font-mono uppercase tracking-wider text-neutral-500">
+                    <span className="text-xs font-mono uppercase tracking-wider text-neutral-500">
                       Dari {activeRoute.label}
                     </span>
-                    <span className="text-[11px] font-mono font-semibold text-emerald-400">
+                    <span className="text-xs font-mono font-semibold text-emerald-400">
                       {activeRoute.tag}
                     </span>
                   </div>
@@ -1718,9 +1719,9 @@ export function App() {
               </a>
             </div>
 
-            <div className="lg:col-span-7 bg-[#080808] rounded-2xl overflow-hidden border border-white/15 flex flex-col min-h-[460px]">
+            <div className="lg:col-span-7 bg-[#080808] rounded-2xl overflow-hidden border border-white/15 flex flex-col min-h-[28rem]">
               <div className="px-5 py-3 border-b border-white/15 flex items-center justify-between gap-4 bg-[#080808]">
-                <span className="text-[11px] font-mono uppercase tracking-wider text-neutral-500">
+                <span className="text-xs font-mono uppercase tracking-wider text-neutral-500">
                   Tampilan Peta
                 </span>
                 <div
@@ -1731,7 +1732,7 @@ export function App() {
                   <button
                     type="button"
                     onClick={() => setMapTheme("dark")}
-                    className={`px-3.5 py-1.5 text-[11px] tracking-wide border-r border-white/15 transition-colors duration-200 cursor-pointer ${
+                    className={`px-3.5 py-1.5 text-xs tracking-wide border-r border-white/15 transition-colors duration-200 cursor-pointer ${
                       mapTheme === "dark"
                         ? "bg-white text-black font-bold"
                         : "bg-transparent text-neutral-400 hover:text-white hover:bg-white/[0.04] font-medium"
@@ -1742,7 +1743,7 @@ export function App() {
                   <button
                     type="button"
                     onClick={() => setMapTheme("standard")}
-                    className={`px-3.5 py-1.5 text-[11px] tracking-wide transition-colors duration-200 cursor-pointer ${
+                    className={`px-3.5 py-1.5 text-xs tracking-wide transition-colors duration-200 cursor-pointer ${
                       mapTheme === "standard"
                         ? "bg-white text-black font-bold"
                         : "bg-transparent text-neutral-400 hover:text-white hover:bg-white/[0.04] font-medium"
@@ -1753,16 +1754,16 @@ export function App() {
                 </div>
               </div>
 
-              <div className="relative flex-1 min-h-[430px]">
+              <div className="relative flex-1 min-h-[26rem]">
                 <iframe
                   title="Peta Lokasi SMKN 14 Medan"
                   src="https://maps.google.com/maps?q=SMK+Negeri+14+Medan,+Jl.+Karya+Dalam+No.26,+Medan&t=&z=16&ie=UTF8&iwloc=&output=embed"
                   width="100%"
                   height="100%"
-                  style={{ border: 0, minHeight: "430px" }}
+                  style={{ border: 0 }}
                   allowFullScreen={true}
                   loading="lazy"
-                  className={`w-full h-full transition-all duration-300 ${
+                  className={`w-full h-full min-h-[26rem] transition-all duration-300 ${
                     mapTheme === "dark"
                       ? "filter contrast-125 invert-[0.92] hue-rotate-180 opacity-90"
                       : "opacity-95"
@@ -1777,16 +1778,16 @@ export function App() {
       {/* FOOTER & KANAL KONTAK AKTIF */}
       <footer
         id="kontak"
-        className="w-full bg-[#030303] text-white border-t border-white/10 px-6 md:px-20 pt-24 pb-28 md:pb-16 relative overflow-hidden"
+        className="w-[100vw] bg-[#030303] text-white border-t border-white/10 px-6 md:px-20 pt-24 pb-28 md:pb-16 relative overflow-hidden"
       >
         <div className="max-w-7xl mx-auto w-full">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 pb-16 border-b border-white/10">
             <div className="lg:col-span-5 space-y-6">
-              <p className="text-sm text-neutral-300 font-normal max-w-md leading-relaxed">
+              <p className="text-sm text-neutral-300 font-normal w-full lg:w-[90%] leading-relaxed">
                 {schoolContacts.address}
               </p>
 
-              <div className="border-y border-white/10 py-4 max-w-md space-y-1.5">
+              <div className="border-y border-white/10 py-4 w-full lg:w-[90%] space-y-1.5">
                 <div className="flex items-center gap-2.5">
                   <span
                     className={`w-2 h-2 rounded-full shrink-0 ${
@@ -1796,7 +1797,7 @@ export function App() {
                     }`}
                   />
                   <span
-                    className={`text-[10px] font-mono uppercase tracking-widest font-bold ${
+                    className={`text-xs font-mono uppercase tracking-widest font-bold ${
                       tuStatus.isOpen ? "text-emerald-400" : "text-neutral-400"
                     }`}
                   >
@@ -1881,7 +1882,7 @@ export function App() {
                         <span className="text-xs font-extrabold uppercase tracking-wider block">
                           WhatsApp
                         </span>
-                        <span className="text-[11px] text-neutral-400 group-hover:text-black/75">
+                        <span className="text-xs text-neutral-400 group-hover:text-black/75">
                           Layanan Informasi Sekolah
                         </span>
                       </div>
@@ -1906,7 +1907,7 @@ export function App() {
                         <span className="text-xs font-extrabold uppercase tracking-wider block">
                           Gmail
                         </span>
-                        <span className="text-[11px] text-neutral-400 group-hover:text-black/75">
+                        <span className="text-xs text-neutral-400 group-hover:text-black/75">
                           Surat Menyurat Resmi
                         </span>
                       </div>
@@ -1933,7 +1934,7 @@ export function App() {
                         <span className="text-xs font-extrabold uppercase tracking-wider block">
                           Instagram
                         </span>
-                        <span className="text-[11px] text-neutral-400 group-hover:text-black/75">
+                        <span className="text-xs text-neutral-400 group-hover:text-black/75">
                           Kegiatan & OSIS
                         </span>
                       </div>
@@ -1960,7 +1961,7 @@ export function App() {
                         <span className="text-xs font-extrabold uppercase tracking-wider block">
                           YouTube
                         </span>
-                        <span className="text-[11px] text-neutral-400 group-hover:text-black/75">
+                        <span className="text-xs text-neutral-400 group-hover:text-black/75">
                           Profil & Liputan
                         </span>
                       </div>
@@ -1979,7 +1980,7 @@ export function App() {
 
           <div className="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-neutral-500">
             <p>© 2026 SMK Negeri 14 Medan. All Rights Reserved.</p>
-            <p className="font-mono text-[11px] text-neutral-600">
+            <p className="font-mono text-xs text-neutral-600">
               Dikembangkan oleh Raziq Hanan Fadillah — XI TKJ-1
             </p>
           </div>
